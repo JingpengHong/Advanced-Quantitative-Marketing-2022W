@@ -95,8 +95,47 @@ Q_std = np.random.normal(size = (D, nK))
 # estimation
 result30 = sp.optimize.minimize(RC, int_val, args=(df), method='L-BFGS-B')
 
+coef30 = result30.x
+coef30 = np.array(coef30).reshape(nK + 1, nK)
+theta30 = coef30[0, :] 
+gamma30 = coef30[1:, :]
+print(theta30)
+print(abs(np.diag(gamma30)))
+
+##############
+## 50 Draws ##
+##############
+
+D = 50
+# standard normal draw
+Q_std = np.random.normal(size = (D, nK)) 
+
+# estimation
+result50 = sp.optimize.minimize(RC, int_val, args=(df), method='L-BFGS-B')
+
+coef50 = result50.x
+coef50 = np.array(coef50).reshape(nK + 1, nK)
+theta50 = coef50[0, :] 
+gamma50 = coef50[1:, :]
+print(theta50)
+print(abs(np.diag(gamma50)))
 
 
+###############
+## 100 Draws ##
+###############
 
+D = 100
+# standard normal draw
+Q_std = np.random.normal(size = (D, nK)) 
 
+# estimation
+result100 = sp.optimize.minimize(RC, int_val, args=(df), method='L-BFGS-B')
+
+coef100 = result100.x
+coef100 = np.array(coef100).reshape(nK + 1, nK)
+theta100 = coef100[0, :] 
+gamma100 = coef100[1:, :]
+print(theta100)
+print(abs(np.diag(gamma100)))
 
